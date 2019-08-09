@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--     <bean id="myCoach" class="com.hunter.AthleticsCoach">
+         collaborators and configuration for this bean go here 
+        <constructor-arg ref="weather"/>
+    </bean>-->
+     <bean id="myCoach" class="com.hunter.AthleticsCoach" scope="prototype">
+        <!-- collaborators and configuration for this bean go here -->
+        <constructor-arg ref="weather"/>
+        <property name="fortuneService" ref="fortune"></property>
+        <property name="gamesPlayed" value="10"></property>
+        <!-- <constructor-arg name="firstName" value="Raj"/>
+        <constructor-arg name="secondName" value="Kumar"/>-->
+        
+    </bean>
+    <bean id="criccoach" class="com.hunter.cricketCoach" scope="prototype" init-method="init">
+    <constructor-arg ref="weather"/>
+    </bean>
+    <bean id="weather" class="com.hunter.WeatherService"></bean>
+    <bean id="fortune" class="com.hunter.FortuneService"></bean>
+</beans>
+
+
